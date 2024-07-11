@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Fly Through Tube</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Создание сцены, камеры и рендерера
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Создание света
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 5, 5).normalize();
+        scene.add(light);
+
+        // Создание текстуры для трубы
+        const textureLoader = new THREE.TextureLoader();
+        const texture = textureLoader.load('https://threejs.org/examples/textures/uv_grid_opengl.jpg');
+
+        // Создание кривой траектории
+        const curve = new THREE.CatmullRomCurve3([
+            new THREE.Vector3(0, 0, -50),
+            new THREE.Vector3(5, 10, -25),
+            new THREE.Vector3(-5, -10, 25),
+            new THREE.Vector3(0, 0, 50)
+        ]);
+
+        // Создание геометрии трубы с использованием кривой
+        const tubeGeometry = new THREE.TubeGeometry(curve, 100, 2, 20, false);
+
+        // Создание материала для трубы
+        const tubeMaterial = new THREE.MeshStandardMaterial({ map: texture, side: THREE.DoubleSide });
+        const tube = new THREE.Mesh(tubeGeometry, tubeMaterial);
+        scene.add(tube);
+
+        // Анимация камеры по кривой
+        let progress = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Перемещение камеры вдоль кривой
+            progress += 0.001; // Уменьшаем скорость
+            progress %= 1; // Зацикливаем движение
+            const point = curve.getPointAt(progress);
+            camera.position.copy(point);
+
+            // Направление камеры по направлению движения
+            const lookAtPoint = curve.getPointAt((progress + 0.01) % 1);
+            camera.lookAt(lookAtPoint);
+
+            renderer.render(scene, camera);
+        }
+
+        // Обработка изменения размеров окна
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>

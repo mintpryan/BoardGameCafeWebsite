@@ -1,0 +1,12 @@
+<!-- templates/admin/myapp/my_inline_template.html -->
+{% load admin_list %}
+<div class="inline-group" id="{{ inline_admin_formset.formset.prefix }}">
+    {{ inline_admin_formset.management_form }}
+    <fieldset class="module aligned {{ inline_admin_formset.classes }}">
+        {% for inline_admin_form in inline_admin_formset %}
+            <div class="inline-related{{ inline_admin_form.form.non_field_errors|yesno:' has-error,' }}">
+                {{ inline_admin_form }}
+            </div>
+        {% endfor %}
+    </fieldset>
+</div>
