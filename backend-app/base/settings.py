@@ -136,5 +136,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     'https://clownfish-app-ecte4.ondigitalocean.app',
-    'https://octopus-app-26yyn.ondigitalocean.app/'
+    'https://octopus-app-26yyn.ondigitalocean.app'
 ]
