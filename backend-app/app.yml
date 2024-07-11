@@ -1,0 +1,11 @@
+name: my-django-app
+services:
+  - name: web
+    build_command: |
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    run_command: gunicorn base.wsgi:application --log-file -
+    static_sites:
+      - name: static
+        path: /static
+        source_dir: static
