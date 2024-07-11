@@ -24,6 +24,7 @@ class Event(AbstractModel):
     recurring_days = models.JSONField(null=True, blank=True)
     recurrence_frequency = models.IntegerField(null=True, blank=True)
     recurrence_end_date = models.DateField(null=True, blank=True) 
+    image = models.ImageField()
 
     def __str__(self):
         return self.title

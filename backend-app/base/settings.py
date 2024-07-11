@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-6h4@1qeutle9v7b-3^h$3&d@2ji0zq&lmg=^#^nq=&2_b#egm7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['clownfish-app-ecte4.ondigitalocean.app','localhost']
+ALLOWED_HOSTS = ['clownfish-app-ecte4.ondigitalocean.app', 'localhost']
 
 
 # Application definition
@@ -135,5 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    'https://clownfish-app-ecte4.ondigitalocean.app'
+    'https://clownfish-app-ecte4.ondigitalocean.app',
+    'https://octopus-app-26yyn.ondigitalocean.app/'
 ]
