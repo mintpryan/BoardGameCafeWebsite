@@ -39,7 +39,7 @@ const eventSlice = createSlice({
             .addCase(fetchEvents.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 const result = action.payload
-
+                state.items = []
                 const transformedEvents = []
                 result.forEach(event => {
                     const start = moment(event.start);
