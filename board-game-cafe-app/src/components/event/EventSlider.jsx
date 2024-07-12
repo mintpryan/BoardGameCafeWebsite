@@ -65,25 +65,25 @@ export default function EventSlider({ mode }) {
 
   useEffect(() => {
     setCards(
-      events.map((event) => 
+      events.map((event) => (
         <EventFlipCard mode={mode} event={event}></EventFlipCard>
-      )
+      ))
     );
   }, [events]);
 
-  return (
-    <>
-      <BaseTitle>Our Events</BaseTitle>
-      <SliderContainer class={mode}>
-        <div
-          className="slider-container"
-          style={{ width: "80%", height: "80%" }}
-        >
-          <Slider {...settings}>
-            {cards}
-          </Slider>
-        </div>
-      </SliderContainer>
-    </>
-  );
+  if (events.length > 0) {
+    return (
+      <>
+        <BaseTitle>Our Events</BaseTitle>
+        <SliderContainer class={mode}>
+          <div
+            className="slider-container"
+            style={{ width: "80%", height: "80%" }}
+          >
+            <Slider {...settings}>{cards}</Slider>
+          </div>
+        </SliderContainer>
+      </>
+    );
+  } else return <h1>"No events"</h1>;
 }
