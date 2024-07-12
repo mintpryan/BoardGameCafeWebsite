@@ -44,7 +44,7 @@ const menuItemsSlice = createSlice({
 export const { selectItem } = menuItemsSlice.actions;
 export const menuItemsSelector = (state) => state.menuItems.items;
 export const menuItemSelector = (state) => state.menuItems.selectedItem;
-export const categoryStatus = (state) => state.menuItems.status;
-export const categoryError = (state) => state.menuItems.error;
+export const menuItemStatus = (state) => state.menuItems.status;
+export const menuItemError = (state) => state.menuItems.error;
 
 export default menuItemsSlice.reducer;

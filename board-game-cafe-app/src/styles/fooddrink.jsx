@@ -1,4 +1,4 @@
-import { Menu, Row } from "antd";
+import { Layout, Menu, Row } from "antd";
 import Sider from "antd/es/layout/Sider";
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
@@ -68,4 +68,25 @@ export const ItemDescription = styled.p`
 export const ItemPrice = styled.p`
   font-size: 1em;
   font-family: "Nunito";
+`;
+
+
+
+const { Header, Content } = Layout;
+
+export const StyledLayout = styled(Layout)`
+  min-height: 100vh;
+  
+`;
+
+export const StyledHeader = styled(Header)`
+  background-color: #DEE9D3;
+  padding: 0;
+  box-shadow: 0 2px 8px #f0f1f2;
+`;
+
+export  const StyledContent = styled(Content)`
+  margin: 24px 16px 0;
+  padding: 24px;
+  background: #DEE9D3;
 `;

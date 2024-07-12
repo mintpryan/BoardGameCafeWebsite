@@ -1,13 +1,14 @@
 import {  Layout } from "antd";
-import { BaseTitle } from "../../styles/styles";
 import { TEXTS } from "../../constants";
 import SocialMedia from "./SocialMedia";
+import a_logo from '../../assets/a_logo.png'
+import { HorizontalImage } from "../../styles/main";
 
 export default function Footer() {
   return (
     <>
       <Layout.Footer>
-        <BaseTitle>{TEXTS.cafe_name}</BaseTitle>
+        <HorizontalImage src={a_logo}></HorizontalImage>
         <div id="social-media">
           <SocialMedia></SocialMedia>
         </div>

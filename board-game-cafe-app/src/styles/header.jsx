@@ -3,12 +3,13 @@ import { tokens } from "./main";
 import styled from "styled-components";
 import SocialMedia from "../components/base/SocialMedia";
 import RefIcon from "@ant-design/icons/lib/icons/AccountBookFilled";
+import { Header } from "antd/es/layout/layout";
 
-export const BaseHeader = styled(Layout)`
+export const BaseHeader = styled(Header)`
   display: flex;
   padding: 0.5em;
 
-  background-color: ${tokens.bodyBg};
+  background-color: white;
   border-bottom: 0.1em solid rgba(5, 52, 99, 0.06);
 
   @media only screen and (max-width: 767.98px) {

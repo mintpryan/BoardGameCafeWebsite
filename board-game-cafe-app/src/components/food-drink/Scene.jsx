@@ -10,9 +10,9 @@ function CameraSetup({ modelSize }) {
   useEffect(() => {
     if (modelSize) {
       const maxDim = Math.max(modelSize.x, modelSize.y, modelSize.z);
-      const distance = maxDim * 1.2; // Устанавливаем расстояние камеры от объекта на основе его размера
-      camera.position.set(0, distance * 0.5, distance); // Настраиваем позицию камеры
-      camera.lookAt(0, 0, 0); // Камера смотрит на центр сцены
+      const distance = maxDim * 1.2; 
+      camera.position.set(0, distance * 0.5, distance);
+      camera.lookAt(0, 0, 0);
     }
   }, [camera, modelSize]);
 
@@ -32,26 +32,26 @@ function Scene({ file_name, isHovered }) {
     >
       <StyledCanvas camera={{ position: [0, 2, 5], fov: 60 }}>
         <ambientLight intensity={1} />{" "}
-        {/* Увеличиваем интенсивность фонового света */}
+        
         <directionalLight
           position={[10, 10, 5]}
           intensity={2}
           castShadow
         />{" "}
-        {/* Увеличиваем интенсивность направленного света */}
+      
         <directionalLight
           position={[-10, 10, -5]}
           intensity={1}
           castShadow
         />{" "}
-        {/* Добавляем дополнительный направленный свет */}
+       
         <Model
-          url={`${process.env.REACT_APP_API_BASE_URL}/model/download/${file_name}`}
+          url={`${process.env.REACT_APP_API_BASE_URL}/file/download/${file_name}`}
           setModelSize={setModelSize}
           isHovered={isHovered}
         />
         <CameraSetup modelSize={modelSize} />{" "}
-        {/* Адаптивная настройка камеры */}
+       
       </StyledCanvas>
     </div>
   );

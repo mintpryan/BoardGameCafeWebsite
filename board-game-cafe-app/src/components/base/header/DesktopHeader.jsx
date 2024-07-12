@@ -3,6 +3,7 @@ import { DesktopBaseMenu, NamedLogo } from "../../../styles/header";
 import AppLogo from "../AppLogo";
 import { NavLink } from "react-router-dom";
 import { Desktop } from "../../../styles/main";
+import logo from '../../../assets/Logo.png'
 import { HEADER_MENU_ITEMS,TEXTS } from "../../../constants";
 
 export default function DesktopHeader() {
@@ -14,7 +15,7 @@ export default function DesktopHeader() {
   return (
     <Desktop>
       <NamedLogo>
-        <AppLogo size="md"></AppLogo>
+        <AppLogo size="md" image={logo}></AppLogo>
       </NamedLogo>
 
       <DesktopBaseMenu mode="horizontal" defaultSelectedKeys={["1"]}>

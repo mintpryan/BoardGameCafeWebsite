@@ -29,7 +29,7 @@ export default function SideMenu() {
 
   useEffect(() => {
     dispatch(fetchMenuItems());
-  }, [selectedItem]);
+  }, [selectedItem,dispatch]);
 
   const onSelect = (e) => {
     dispatch(selectItem(e.key));

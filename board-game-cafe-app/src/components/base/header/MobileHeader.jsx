@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { MenuDrawer, NavLinkContainer } from "../../../styles/header";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import AppLogo from "../AppLogo";
+import a_logo from '../../../assets/a_logo.png'
 import { Mobile } from "../../../styles/main";
 import { HEADER_MENU_ITEMS, TEXTS } from "../../../constants";
 
@@ -49,7 +50,7 @@ export default function MobileHeader() {
       >
         <NavLinkContainer>{header_items}</NavLinkContainer>
       </MenuDrawer>
-      <AppLogo size="md"></AppLogo>
+      <AppLogo size="md" image={a_logo} ></AppLogo>
     </Mobile>
   );
 }

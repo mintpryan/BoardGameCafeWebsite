@@ -8,6 +8,7 @@ import { ConfigProvider } from "antd";
 import { tokens } from "../styles/main";
 import Home from "../pages/Home";
 import FoodDrinkPage from "../pages/FoodDrinkPage";
+import { Helmet } from 'react-helmet';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -51,6 +52,10 @@ function App() {
 
   ))
   return (<>
+    <Helmet>
+      <title>Sip&Play - Board Game Cafe</title>
+      <meta name="description" content="Visit our board game cafe, where you will find a wide selection of games for all ages. Enjoy delicious drinks and snacks in a cozy atmosphere."/>
+    </Helmet>
     <GlobalStyle />
     <ConfigProvider theme={{
       token: tokens,

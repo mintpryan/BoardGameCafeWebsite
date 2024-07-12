@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
+import { StyledFeaturesFlipCard } from "../../styles/styles";
+import SimpleCard from "../SimpleCard";
 import { Button } from "antd";
-import { StyledFlipCard } from "../../styles/events";
 
-export default function FlipCard({mode}) {
+export default function FlipCard({ mode,color,number }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleClick = () => {
@@ -11,22 +12,19 @@ export default function FlipCard({mode}) {
   };
 
   return (
-    
-      <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-        <StyledFlipCard key="front" className={mode}>
-          <p>Это передняя сторона карточки.</p>
-          <Button type="primary" onClick={handleClick}>
-            Перевернуть
-          </Button>
-        </StyledFlipCard>
+    <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+      <StyledFeaturesFlipCard key="front" onClick={handleClick}>
+      
+          <SimpleCard color={color} number={number}></SimpleCard>
+  
+      </StyledFeaturesFlipCard>
 
-        <StyledFlipCard key="back" className={mode}>
-          <p>Это задняя сторона карточки.</p>
-          <Button type="primary" onClick={handleClick}>
-            Перевернуть обратно
-          </Button>
-        </StyledFlipCard>
-      </ReactCardFlip>
-
+      <StyledFeaturesFlipCard key="back" className={mode}>
+        <p>Это задняя сторона карточки.</p>
+        <Button type="primary" onClick={handleClick}>
+          Перевернуть обратно
+        </Button>
+      </StyledFeaturesFlipCard>
+    </ReactCardFlip>
   );
-};
+}

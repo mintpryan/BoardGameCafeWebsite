@@ -10,6 +10,13 @@ export const fetchEvents = createAsyncThunk('items/fetchEvents', async () => {
 });
 
 
+export const fetchEvent = createAsyncThunk('items/fetchEvent', async (_, { getState }) => {
+    const state = getState();
+    const selectedItem = state.event.selectedItem;
+    const response = await fetcher(`event/${selectedItem.public_id}/`);
+    return response.data;
+});
+
 
 const eventSlice = createSlice({
     name: 'event',
@@ -21,7 +28,7 @@ const eventSlice = createSlice({
     },
     reducers: {
         selectItem: (state, action) => {
-            state.selectedItem = state.items.find((item) => item.key === action.payload);
+            state.selectedItem = state.items.find((item) => item.public_id === action.payload);
         }
     },
     extraReducers: (builder) => {
@@ -48,19 +55,23 @@ const eventSlice = createSlice({
                                 byweekday: RRule[day],
                                 dtstart: new Date(`${event.start}`),
                                 until: event.recurrence_end_date ? new Date(event.recurrence_end_date) : null
+
                             }));
                         });
                         transformedEvents.push({
                             duration: `${duration.hours().toString().padStart(2, '0')}:${duration.minutes().toString().padStart(2, '0')}`,
                             title: event.title,
-                            rrule: rruleSet.toString()
+                            rrule: rruleSet.toString(),
+                            description: event.description,
+                            file_name: event.file_name,
+                            public_id: event.public_id
                         });
-                    }
-                    transformedEvents.push({
-                        ...event,
-                        start: `${event.start}`,
-                        end: event.end ? `${event.end}` : null,
-                    });
+                    } else
+                        transformedEvents.push({
+                            ...event,
+                            start: `${event.start}`,
+                            end: event.end ? `${event.end}` : null,
+                        });
                 })
                 state.items = transformedEvents
             })

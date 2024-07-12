@@ -16,15 +16,15 @@ export default function Model({ url, setModelSize,isHovered }) {
     if (ref.current) {
       const box = new THREE.Box3().setFromObject(ref.current);
       const size = box.getSize(new THREE.Vector3());
-      setModelSize(size); // Передаем размер модели в родительский компонент
+      setModelSize(size);
       const center = box.getCenter(new THREE.Vector3());
-      ref.current.position.sub(center); // Центрируем объект
+      ref.current.position.sub(center);
     }
   }, [scene, setModelSize]);
 
   useFrame(() => {
     if (ref.current && isHovered) {
-        ref.current.rotation.y += 0.01; // Вращаем модель вокруг оси Y
+        ref.current.rotation.y += 0.01;
       }
   });
 

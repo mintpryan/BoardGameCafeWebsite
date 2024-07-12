@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import SideMenu from "../components/food-drink/SideMenu";
-import { CardRow, MenuMain, RowWithoutWrapping } from "../styles/fooddrink";
-import { BaseTitle } from "../styles/styles";
+import { MenuMain } from "../styles/fooddrink";
+import { BaseTitle, HeroTitle, SmallHeroContainer } from "../styles/styles";
 import { useSelector } from "react-redux";
 import { menuItemsSelector } from "../feautures/menuItemsSlice";
 import MenuItemCard from "../components/food-drink/MenuItemCard";
 import { Col, Row } from "antd";
-import { isAnyOf } from "@reduxjs/toolkit";
+import heart from '../assets/heart.png'
+import { Helmet } from "react-helmet";
+import HeaderMenu from "../components/food-drink/HeaderMenu";
+import { ImageContainer } from "../components/CardComponent";
 
 export default function FoodDrinkPage() {
   const menuItems = useSelector(menuItemsSelector);
@@ -24,16 +26,32 @@ export default function FoodDrinkPage() {
   }, [menuItems]);
 
   return (
-    <MenuMain>
-      <Row justify="center">
-        <BaseTitle>Our Menu</BaseTitle>
-      </Row>
-      <RowWithoutWrapping>
+    <>
+      <Helmet>
+        <title>Food&Drink | Menu | Sip&Play</title>
+        <meta
+          name="description"
+          content="Some snacks,
+                meals, and beverages"
+        />
+      </Helmet>
+      <MenuMain>
+        <Row justify="center">
+          <BaseTitle>Our Menu</BaseTitle>
+        </Row>
+        <HeaderMenu></HeaderMenu>
+
         <Col>
-          <SideMenu></SideMenu>
+          {itemsCard.length === 0 ? (
+            <SmallHeroContainer>
+              <ImageContainer><img src={heart}></img></ImageContainer>
+              <HeroTitle>Choose smth delicious!</HeroTitle>
+            </SmallHeroContainer>
+          ) : (
+            itemsCard
+          )}
         </Col>
-        <Col>{itemsCard.length == 0 ? <h1>No elements</h1> : itemsCard}</Col>
-      </RowWithoutWrapping>
-    </MenuMain>
+      </MenuMain>
+    </>
   );
 }

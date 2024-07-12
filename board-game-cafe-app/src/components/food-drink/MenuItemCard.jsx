@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Col } from "antd";
 import { Card, CardRow, ItemDescription, ItemName, ItemPrice } from "../../styles/fooddrink";
 import Scene from "./Scene";
 import { useState } from "react";
@@ -15,7 +15,7 @@ export default function MenuItemCard({
     <Card onPointerOver={() => setIsHovered(true)}
     onPointerOut={() => setIsHovered(false)}>
       <CardRow>
-        <Col flex={4}>
+        <Col span={8}>
           <Scene file_name={model_file_name} isHovered={isHovered}></Scene>
         </Col>
         <Col flex={7}>

@@ -10,7 +10,7 @@ const HeroSection = () => (
       Your browser does not support the video tag.
     </VideoBackground>
 
-    <HeroTitle>Welcome to Game Rooms</HeroTitle>
+    <HeroTitle>Welcome to Sip & Play!</HeroTitle>
     <HeroSubtitle>Let's roll the dice</HeroSubtitle>
 
   </HeroContainer>
