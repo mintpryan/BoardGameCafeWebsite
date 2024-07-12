@@ -124,6 +124,12 @@ export const BaseTitle = styled.h1`
   }
 `;
 
+export const BaseText = styled.p`
+  font-size: 1rem;
+  margin: 1em;
+  font-family: "Nunito";
+`;
+
 export const SocialMediaIcon = {
   "font-size": "3em",
   color: "#3b5998",
