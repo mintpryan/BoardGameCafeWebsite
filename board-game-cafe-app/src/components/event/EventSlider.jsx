@@ -71,10 +71,10 @@ export default function EventSlider({ mode }) {
     );
   }, [events]);
 
-  if (events.length > 0) {
-    return (
-      <>
-        <BaseTitle>Our Events</BaseTitle>
+  return (
+    <>
+      <BaseTitle>Our Events</BaseTitle>
+      {events.length > 0 ? (
         <SliderContainer class={mode}>
           <div
             className="slider-container"
@@ -83,7 +83,9 @@ export default function EventSlider({ mode }) {
             <Slider {...settings}>{cards}</Slider>
           </div>
         </SliderContainer>
-      </>
-    );
-  } else return <h1>"No events"</h1>;
+      ) : (
+        <h1>No events</h1>
+      )}
+    </>
+  );
 }
