@@ -40,8 +40,8 @@ export const Card = styled.div`
 `;
 
 export const StyledCanvas = styled(Canvas)`
-  width: "20vw";
-  height: "20vw";
+  background:white;
+  border-radius: 15px; 
 `;
 
 export const CardRow = styled(Row)`

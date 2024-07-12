@@ -9,18 +9,19 @@ import heart from '../assets/heart.png'
 import { Helmet } from "react-helmet";
 import HeaderMenu from "../components/food-drink/HeaderMenu";
 import { ImageContainer } from "../components/CardComponent";
+import ItemCardComponent from "../components/food-drink/ItemCardComponent";
 
 export default function FoodDrinkPage() {
   const menuItems = useSelector(menuItemsSelector);
   const [itemsCard, setItemsCard] = useState([]);
   useEffect(() => {
     const cards = menuItems.map((item) => (
-      <MenuItemCard
+      <ItemCardComponent
         name={item.name}
         description={item.description}
         price={item.price}
         model_file_name={item.file_name}
-      ></MenuItemCard>
+      ></ItemCardComponent>
     ));
     setItemsCard(cards);
   }, [menuItems]);
