@@ -2,6 +2,7 @@ from django.db import models
 from core.abstract import AbstractModel
 import uuid
 import os
+from django.conf import settings
 # Create your models here.
 
 
@@ -15,7 +16,7 @@ class Category(AbstractModel):
 def get_file_path(instance, filename):
     ext = filename.split('.')[-1]
     filename = f"{uuid.uuid4()}.{ext}"
-    return os.path.join('3dModels/', filename)
+    return os.path.join(settings.ASSETS_ROOT, filename)
 
 class MenuItem(AbstractModel):
     name = models.CharField(max_length=200)

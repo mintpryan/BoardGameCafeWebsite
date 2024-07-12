@@ -1,8 +1,15 @@
 from django.db import models
 from core.abstract.models import AbstractModel
 from django.utils import timezone
-import pytz
+import uuid
+import os
+from django.conf import settings
 # # Create your models here.
+
+def get_file_path(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join(settings.ASSETS_ROOT, filename)
 
 
 class Event(AbstractModel):
@@ -24,7 +31,7 @@ class Event(AbstractModel):
     recurring_days = models.JSONField(null=True, blank=True)
     recurrence_frequency = models.IntegerField(null=True, blank=True)
     recurrence_end_date = models.DateField(null=True, blank=True) 
-    image = models.ImageField(null=True,blank=True)
+    image = models.ImageField(upload_to=get_file_path,null=True,blank=True)
 
     def __str__(self):
         return self.title
