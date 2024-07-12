@@ -10,4 +10,4 @@ class CoreConfig(AppConfig):
         post_migrate.connect(create_default_superuser, sender=self)
 
 def create_default_superuser(sender, **kwargs):
-    call_command('create_default_superuser')
+    call_command('create_superuser')
